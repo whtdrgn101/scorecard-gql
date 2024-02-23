@@ -1,0 +1,21 @@
+type Query {
+    bowList(user_id: Int): [BowResponse]
+    bowById(bow_id: Int): BowResponse
+}
+
+type BowResponse {
+    id: Int
+    userId: Int
+    name: String
+    bowType: BowTypeResponse
+    manufacturer: String
+    model: String
+    drawWeight: Float
+    ataLength: Float
+    braceHeight: Float
+}
+
+type BowTypeResponse {
+    id: Int
+    name: String
+}

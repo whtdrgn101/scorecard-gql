@@ -1,6 +1,7 @@
 type Query {
     bowList(user_id: Int): [BowResponse]
     bowById(bow_id: Int): BowResponse
+    bowTypeList: [BowTypeResponse]
 }
 
 type BowResponse {

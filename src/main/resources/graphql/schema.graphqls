@@ -2,6 +2,8 @@ type Query {
     bowList(user_id: Int): [BowResponse]
     bowById(bow_id: Int): BowResponse
     bowTypeList: [BowTypeResponse]
+    roundList(userId: Int): [RoundResponse]
+    roundTypeList: [RoundTypeResponse]
 }
 
 type BowResponse {
@@ -16,7 +18,23 @@ type BowResponse {
     braceHeight: Float
 }
 
+type RoundResponse {
+    id: Int
+    userId: Int
+    bow: BowResponse
+    roundType: RoundTypeResponse
+    location: String
+    notes: String
+    date: String
+    score: Int
+}
+
 type BowTypeResponse {
+    id: Int
+    name: String
+}
+
+type RoundTypeResponse {
     id: Int
     name: String
 }

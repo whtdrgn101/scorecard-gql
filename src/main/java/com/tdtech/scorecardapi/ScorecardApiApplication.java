@@ -9,7 +9,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @SpringBootApplication
-@ComponentScan({"com.tdtech.scorecardapi.controller", "com.tdtech.scorecardapi.service"})
+@ComponentScan({"com.tdtech.scorecardapi.aspect", "com.tdtech.scorecardapi.controller", "com.tdtech.scorecardapi.service"})
 @EntityScan({"com.tdtech.scorecardapi.entity"})
 @EnableJpaRepositories({"com.tdtech.scorecardapi.repository"})
 public class ScorecardApiApplication {

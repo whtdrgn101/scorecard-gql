@@ -38,3 +38,4 @@ out/
 
 ### Logging and other runtiem files ###
 *.log
+*.gz

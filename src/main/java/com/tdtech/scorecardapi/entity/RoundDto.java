@@ -1,28 +1,22 @@
 package com.tdtech.scorecardapi.entity;
 
-import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.Date;
 
-@Data
-@Entity
-@Table(name="round")
+@Getter
+@Setter
+@Document(collection="rounds")
 @AllArgsConstructor
 @NoArgsConstructor
 public class RoundDto {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private long userId;
-    @OneToOne
-    @JoinColumn(name="bowId")
     private BowDto bow;
-    @OneToOne
-    @JoinColumn(name="roundTypeId")
-    private RoundTypeDto roundType;
+    private String roundType;
     private Date roundDate;
     private String location;
     private String notes;

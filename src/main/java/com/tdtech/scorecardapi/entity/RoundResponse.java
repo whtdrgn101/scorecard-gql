@@ -12,7 +12,7 @@ public class RoundResponse {
     private long id;
     private long userId;
     private BowResponse bow;
-    private RoundTypeResponse roundType;
+    private String roundType;
     private Date roundDate;
     private String location;
     private String notes;
@@ -22,7 +22,7 @@ public class RoundResponse {
         this.id = round.getId();
         this.userId = round.getUserId();
         this.bow = new BowResponse(round.getBow());
-        this.roundType = new RoundTypeResponse(round.getRoundType());
+        this.roundType = round.getRoundType();
         this.roundDate = round.getRoundDate();
         this.location = round.getLocation();
         this.notes = round.getNotes();

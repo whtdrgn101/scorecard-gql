@@ -1,16 +1,46 @@
 type Query {
     bowList(user_id: Int): [BowResponse]
     bowById(bow_id: Int): BowResponse
-    bowTypeList: [BowTypeResponse]
     roundList(userId: Int): [RoundResponse]
     roundTypeList: [RoundTypeResponse]
+    userList: [UserResponse]
+}
+
+type Mutation {
+    createUser(user: UserRequest): UserResponse
+    updateUser(id: String, user: UserRequest): UserResponse
+}
+
+input UserRequest {
+    firstName: String
+    lastName: String
+    email: String
+    password: String
+    bows: [BowRequest]
+}
+
+type UserResponse {
+    id: String
+    firstName: String
+    lastName: String
+    email: String
+    bows: [BowResponse]
 }
 
 type BowResponse {
-    id: Int
-    userId: Int
+    id: String
     name: String
-    bowType: BowTypeResponse
+    bowType: String
+    manufacturer: String
+    model: String
+    drawWeight: Float
+    ataLength: Float
+    braceHeight: Float
+}
+
+input BowRequest {
+    name: String
+    bowType: String
     manufacturer: String
     model: String
     drawWeight: Float
@@ -27,11 +57,6 @@ type RoundResponse {
     notes: String
     date: String
     score: Int
-}
-
-type BowTypeResponse {
-    id: Int
-    name: String
 }
 
 type RoundTypeResponse {

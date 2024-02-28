@@ -29,7 +29,18 @@ public class RoundQuery {
     }
 
     @MutationMapping
+    public boolean deleteRound(@Argument String roundId) {
+        return roundService.deleteRound(roundId);
+    }
+
+    @MutationMapping
+    public RoundResponse updateRound(@Argument String roundId, @Argument RoundRequest round){
+        return roundService.updateRound(roundId, round);
+    }
+
+    @MutationMapping
     public RoundResponse createRound(@Argument RoundRequest round) {
         return roundService.createRound(round);
     }
+
 }

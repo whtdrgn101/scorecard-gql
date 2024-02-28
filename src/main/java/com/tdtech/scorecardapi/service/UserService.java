@@ -24,6 +24,15 @@ public class UserService {
         return response;
     }
 
+    public UserResponse getUser(String userId) {
+        if(userRepository.findById(userId).isPresent()) {
+            UserDto user = userRepository.findById(userId).get();
+            return new UserResponse(user);
+        } else {
+            return null;
+        }
+    }
+
     public UserResponse createUser(UserRequest user) {
         UserDto newUser = new UserDto(user);
         userRepository.save(newUser);

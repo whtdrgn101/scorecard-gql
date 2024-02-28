@@ -2,12 +2,15 @@ type Query {
     roundList(userId: String, pageNo: Int, pageSize: Int): [RoundResponse]
     getRound(roundId: String): RoundResponse
     userList: [UserResponse]
+    getUser(userId: String): UserResponse
 }
 
 type Mutation {
     createUser(user: UserRequest): UserResponse
     updateUser(id: String, user: UserRequest): UserResponse
     createRound(round: RoundRequest): RoundResponse
+    updateRound(roundId: String, round: RoundRequest): RoundResponse
+    deleteRound(roundId: String): Boolean
 }
 
 input RoundRequest {

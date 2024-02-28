@@ -1,9 +1,6 @@
 package com.tdtech.scorecardapi.service;
 
-import com.tdtech.scorecardapi.entity.RoundDto;
-import com.tdtech.scorecardapi.entity.RoundRequest;
-import com.tdtech.scorecardapi.entity.RoundResponse;
-import com.tdtech.scorecardapi.entity.UserDto;
+import com.tdtech.scorecardapi.entity.*;
 import com.tdtech.scorecardapi.repository.RoundRepository;
 import com.tdtech.scorecardapi.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,5 +38,48 @@ public class RoundService {
         RoundDto r = new RoundDto(round, user);
         roundRepository.save(r);
         return new RoundResponse(r);
+    }
+
+    public RoundResponse updateRound(String roundId, RoundRequest round) {
+
+        if(roundRepository.findById(roundId).isPresent()) {
+
+            RoundDto r = roundRepository.findById(roundId).get();
+            if(round.getUserId() != null && !round.getUserId().isBlank()) {
+
+                if(userRepository.findById(round.getUserId()).isPresent()) {
+                    UserDto user = userRepository.findById(round.getUserId()).get();
+                    r.setUser(user);
+                }
+
+            } else {
+                r.setUser(null);
+            }
+            if(round.getBow() != null) {
+                r.setBow(new BowDto(round.getBow()));
+            } else {
+                r.setBow(null);
+            }
+            r.setRoundType(round.getRoundType());
+            r.setLocation(round.getLocation());
+            r.setNotes(round.getNotes());
+            r.setScore(round.getScore());
+            roundRepository.save(r);
+            return new RoundResponse(r);
+
+        } else {
+            return null;
+        }
+
+    }
+
+    public Boolean deleteRound(String roundId) {
+        try {
+            roundRepository.deleteById(roundId);
+            return true;
+        } catch(Exception ex){
+            return false;
+        }
+
     }
 }

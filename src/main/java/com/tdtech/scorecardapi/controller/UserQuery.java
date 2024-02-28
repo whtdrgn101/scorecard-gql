@@ -22,6 +22,11 @@ public class UserQuery {
         return userService.getAllUsers();
     }
 
+    @QueryMapping
+    public UserResponse getUser(@Argument String userId) {
+        return userService.getUser(userId);
+    }
+
     @MutationMapping
     public UserResponse createUser(@Argument UserRequest user) {
         return userService.createUser(user);

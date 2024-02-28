@@ -9,8 +9,8 @@ import java.util.Date;
 @Getter
 @NoArgsConstructor
 public class RoundResponse {
-    private long id;
-    private long userId;
+    private String id;
+    private String userId;
     private BowResponse bow;
     private String roundType;
     private Date roundDate;
@@ -21,7 +21,9 @@ public class RoundResponse {
     public RoundResponse(RoundDto round) {
         this.id = round.getId();
         this.userId = round.getUserId();
-        this.bow = new BowResponse(round.getBow());
+        if(this.bow != null) {
+            this.bow = new BowResponse(round.getBow());
+        }
         this.roundType = round.getRoundType();
         this.roundDate = round.getRoundDate();
         this.location = round.getLocation();

@@ -13,12 +13,24 @@ import java.util.Date;
 @NoArgsConstructor
 public class RoundDto {
     @Id
-    private long id;
-    private long userId;
+    private String id;
+    private String userId;
     private BowDto bow;
     private String roundType;
     private Date roundDate;
     private String location;
     private String notes;
     private int score;
+
+    public RoundDto(RoundRequest round) {
+        this.userId = round.getUserId();
+        if(round.getBow() != null) {
+            this.bow = new BowDto(round.getBow());
+        }
+        this.roundType = round.getRoundType();
+        this.roundDate = round.getRoundDate();
+        this.location = round.getLocation();
+        this.notes = round.getNotes();
+        this.score = round.getScore();
+    }
 }

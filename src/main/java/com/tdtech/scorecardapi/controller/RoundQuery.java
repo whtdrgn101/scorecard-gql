@@ -1,9 +1,12 @@
 package com.tdtech.scorecardapi.controller;
 
+import com.tdtech.scorecardapi.entity.RoundDto;
+import com.tdtech.scorecardapi.entity.RoundRequest;
 import com.tdtech.scorecardapi.entity.RoundResponse;
 import com.tdtech.scorecardapi.service.RoundService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.graphql.data.method.annotation.Argument;
+import org.springframework.graphql.data.method.annotation.MutationMapping;
 import org.springframework.graphql.data.method.annotation.QueryMapping;
 import org.springframework.stereotype.Controller;
 
@@ -16,7 +19,12 @@ public class RoundQuery {
     RoundService roundService = null;
 
     @QueryMapping
-    public List<RoundResponse> roundList(@Argument Integer userId) {
-        return roundService.roundList((long)userId);
+    public List<RoundResponse> roundList(@Argument String userId) {
+        return roundService.roundList(userId);
+    }
+
+    @MutationMapping
+    public RoundResponse createRound(@Argument RoundRequest round) {
+        return roundService.createRound(round);
     }
 }

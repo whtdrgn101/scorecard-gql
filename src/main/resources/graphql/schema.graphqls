@@ -1,14 +1,22 @@
 type Query {
-    bowList(user_id: Int): [BowResponse]
-    bowById(bow_id: Int): BowResponse
-    roundList(userId: Int): [RoundResponse]
-    roundTypeList: [RoundTypeResponse]
+    roundList(userId: String): [RoundResponse]
     userList: [UserResponse]
 }
 
 type Mutation {
     createUser(user: UserRequest): UserResponse
     updateUser(id: String, user: UserRequest): UserResponse
+    createRound(round: RoundRequest): RoundResponse
+}
+
+input RoundRequest {
+    userId: String
+    bow: BowRequest
+    roundType: String
+    location: String
+    notes: String
+    roundDate: String
+    score: Int
 }
 
 input UserRequest {
@@ -49,17 +57,12 @@ input BowRequest {
 }
 
 type RoundResponse {
-    id: Int
-    userId: Int
+    id: String
+    userId: String
     bow: BowResponse
-    roundType: RoundTypeResponse
+    roundType: String
     location: String
     notes: String
-    date: String
+    roundDate: String
     score: Int
-}
-
-type RoundTypeResponse {
-    id: Int
-    name: String
 }

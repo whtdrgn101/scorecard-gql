@@ -21,7 +21,7 @@ public class RoundResponse {
     public RoundResponse(RoundDto round) {
         this.id = round.getId();
         this.userId = round.getUserId();
-        if(this.bow != null) {
+        if(round.getBow() != null) {
             this.bow = new BowResponse(round.getBow());
         }
         this.roundType = round.getRoundType();

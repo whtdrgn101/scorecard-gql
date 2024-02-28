@@ -1,5 +1,5 @@
 type Query {
-    roundList(userId: String): [RoundResponse]
+    roundList(userId: String, pageNo: Int, pageSize: Int): [RoundResponse]
     userList: [UserResponse]
 }
 

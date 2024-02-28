@@ -19,8 +19,8 @@ public class RoundQuery {
     RoundService roundService = null;
 
     @QueryMapping
-    public List<RoundResponse> roundList(@Argument String userId) {
-        return roundService.roundList(userId);
+    public List<RoundResponse> roundList(@Argument String userId, @Argument int pageNo, @Argument int pageSize) {
+        return roundService.roundList(userId, pageNo, pageSize);
     }
 
     @MutationMapping

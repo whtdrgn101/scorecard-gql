@@ -5,6 +5,8 @@ import com.tdtech.scorecardapi.entity.RoundRequest;
 import com.tdtech.scorecardapi.entity.RoundResponse;
 import com.tdtech.scorecardapi.repository.RoundRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -15,9 +17,10 @@ public class RoundService {
     @Autowired
     RoundRepository roundRepository = null;
 
-    public List<RoundResponse> roundList(String userId) {
+    public List<RoundResponse> roundList(String userId, int pageNo, int pageSize) {
+        Pageable pageable = PageRequest.of(pageNo -1, pageSize);
         List<RoundResponse> response = new ArrayList<RoundResponse>();
-        List<RoundDto> rounds = roundRepository.findByUserId(userId);
+        List<RoundDto> rounds = roundRepository.findByUserId(userId, pageable);
         rounds.forEach(round -> {
             response.add(new RoundResponse(round));
         });

@@ -27,6 +27,10 @@ public class RoundService {
         return response;
     }
 
+    public RoundResponse getRoundById(String roundId) {
+        return new RoundResponse(roundRepository.findById(roundId).get());
+    }
+
     public RoundResponse createRound(RoundRequest round) {
         RoundDto r = new RoundDto(round);
         roundRepository.save(r);

@@ -10,7 +10,6 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 public class BowResponse {
-    private String id;
     private String bowType;
     private String name;
     private String manufacturer;
@@ -20,7 +19,6 @@ public class BowResponse {
     private Double braceHeight;
 
     public BowResponse(BowDto bow) {
-        this.id = bow.getId();
         this.bowType = bow.getBowType();
         this.name = bow.getName();
         this.manufacturer = bow.getManufacturer();

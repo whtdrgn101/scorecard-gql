@@ -23,6 +23,11 @@ public class RoundQuery {
         return roundService.roundList(userId, pageNo, pageSize);
     }
 
+    @QueryMapping
+    public RoundResponse getRound(@Argument String roundId) {
+        return roundService.getRoundById(roundId);
+    }
+
     @MutationMapping
     public RoundResponse createRound(@Argument RoundRequest round) {
         return roundService.createRound(round);

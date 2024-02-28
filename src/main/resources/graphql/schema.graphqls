@@ -1,5 +1,6 @@
 type Query {
     roundList(userId: String, pageNo: Int, pageSize: Int): [RoundResponse]
+    getRound(roundId: String): RoundResponse
     userList: [UserResponse]
 }
 
@@ -36,7 +37,6 @@ type UserResponse {
 }
 
 type BowResponse {
-    id: String
     name: String
     bowType: String
     manufacturer: String

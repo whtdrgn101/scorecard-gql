@@ -3,9 +3,7 @@ package com.tdtech.scorecardapi.entity;
 import lombok.*;
 import org.springframework.data.annotation.Id;
 
-@Setter
-@Getter
-@AllArgsConstructor
+@Data
 @NoArgsConstructor
 public class BowDto {
     private String bowType;

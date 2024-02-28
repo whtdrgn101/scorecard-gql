@@ -1,14 +1,9 @@
 package com.tdtech.scorecardapi.entity;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import org.springframework.data.annotation.Id;
-
+import lombok.Data;
 import java.util.Date;
 
-@Setter
-@Getter
+@Data
 public class RoundRequest {
     private String userId;
     private BowRequest bow;

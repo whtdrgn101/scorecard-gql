@@ -1,11 +1,8 @@
 package com.tdtech.scorecardapi.entity;
 
-import lombok.Getter;
-import lombok.Setter;
-import org.springframework.data.annotation.Id;
+import lombok.Data;
 
-@Getter
-@Setter
+@Data
 public class BowRequest {
 
     private String bowType;

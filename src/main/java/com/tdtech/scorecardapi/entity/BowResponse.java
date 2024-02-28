@@ -1,13 +1,9 @@
 package com.tdtech.scorecardapi.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
-@Getter
-@Setter
-@AllArgsConstructor
+@Data
 @NoArgsConstructor
 public class BowResponse {
     private String bowType;

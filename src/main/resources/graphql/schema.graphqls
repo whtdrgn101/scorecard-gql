@@ -58,7 +58,7 @@ input BowRequest {
 
 type RoundResponse {
     id: String
-    userId: String
+    user: UserResponse
     bow: BowResponse
     roundType: String
     location: String

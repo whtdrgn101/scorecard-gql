@@ -3,7 +3,9 @@ package com.tdtech.scorecardapi.service;
 import com.tdtech.scorecardapi.entity.RoundDto;
 import com.tdtech.scorecardapi.entity.RoundRequest;
 import com.tdtech.scorecardapi.entity.RoundResponse;
+import com.tdtech.scorecardapi.entity.UserDto;
 import com.tdtech.scorecardapi.repository.RoundRepository;
+import com.tdtech.scorecardapi.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -16,6 +18,9 @@ import java.util.List;
 public class RoundService {
     @Autowired
     RoundRepository roundRepository = null;
+
+    @Autowired
+    UserRepository userRepository = null;
 
     public List<RoundResponse> roundList(String userId, int pageNo, int pageSize) {
         Pageable pageable = PageRequest.of(pageNo -1, pageSize);
@@ -32,7 +37,8 @@ public class RoundService {
     }
 
     public RoundResponse createRound(RoundRequest round) {
-        RoundDto r = new RoundDto(round);
+        UserDto user = userRepository.findById(round.getUserId()).get();
+        RoundDto r = new RoundDto(round, user);
         roundRepository.save(r);
         return new RoundResponse(r);
     }

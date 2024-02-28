@@ -1,16 +1,14 @@
 package com.tdtech.scorecardapi.entity;
 
-import lombok.Getter;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 import java.util.Date;
 
-@Setter
-@Getter
+@Data
 @NoArgsConstructor
 public class RoundResponse {
     private String id;
-    private String userId;
+    private UserResponse user;
     private BowResponse bow;
     private String roundType;
     private Date roundDate;
@@ -20,7 +18,9 @@ public class RoundResponse {
 
     public RoundResponse(RoundDto round) {
         this.id = round.getId();
-        this.userId = round.getUserId();
+        if(round.getUser() != null) {
+            this.user = new UserResponse(round.getUser());
+        }
         if(round.getBow() != null) {
             this.bow = new BowResponse(round.getBow());
         }

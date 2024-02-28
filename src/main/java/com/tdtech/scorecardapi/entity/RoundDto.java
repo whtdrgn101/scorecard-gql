@@ -2,19 +2,19 @@ package com.tdtech.scorecardapi.entity;
 
 import lombok.*;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.Date;
 
-@Getter
-@Setter
+@Data
 @Document(collection="rounds")
-@AllArgsConstructor
 @NoArgsConstructor
 public class RoundDto {
     @Id
     private String id;
-    private String userId;
+    @DBRef(lazy = true)
+    private UserDto user;
     private BowDto bow;
     private String roundType;
     private Date roundDate;
@@ -22,8 +22,10 @@ public class RoundDto {
     private String notes;
     private int score;
 
-    public RoundDto(RoundRequest round) {
-        this.userId = round.getUserId();
+    public RoundDto(RoundRequest round, UserDto user) {
+        if(user != null) {
+            this.user = user;
+        }
         if(round.getBow() != null) {
             this.bow = new BowDto(round.getBow());
         }

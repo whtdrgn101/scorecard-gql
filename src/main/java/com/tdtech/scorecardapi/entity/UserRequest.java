@@ -1,13 +1,9 @@
 package com.tdtech.scorecardapi.entity;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-
+import lombok.Data;
 import java.util.List;
 
-@Setter
-@Getter
+@Data
 public class UserRequest {
     private String firstName;
     private String lastName;
